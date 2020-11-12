@@ -9,12 +9,16 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager.widget.ViewPager;
 
+import com.dipen.testprojectapp.AddEventFragment;
 import com.dipen.testprojectapp.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 
@@ -24,6 +28,7 @@ public class HomeFragment extends Fragment {
      PagerAdaper adapter;
      TabLayout mTabs;
      TabItem tab1, tab2, tab3;
+     FloatingActionButton fab;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -62,6 +67,7 @@ public class HomeFragment extends Fragment {
                 });
                 pager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabs));
             }
+
 
         });
 
