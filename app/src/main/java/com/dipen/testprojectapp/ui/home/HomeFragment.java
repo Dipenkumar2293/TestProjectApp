@@ -14,6 +14,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 import androidx.viewpager.widget.ViewPager;
 
 import com.dipen.testprojectapp.AddEventFragment;
@@ -28,7 +29,7 @@ public class HomeFragment extends Fragment {
      PagerAdaper adapter;
      TabLayout mTabs;
      TabItem tab1, tab2, tab3;
-     FloatingActionButton fab;
+     FloatingActionButton fab1;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -40,6 +41,7 @@ public class HomeFragment extends Fragment {
         tab1 = root.findViewById(R.id.daily_tab);
         tab2 = root.findViewById(R.id.weekly_tab);
         tab3 = root.findViewById(R.id.montly_tab);
+        fab1 = root.findViewById(R.id.fab);
         homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
@@ -70,7 +72,12 @@ public class HomeFragment extends Fragment {
 
 
         });
-
+        fab1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(root).navigate(R.id.NavigateToAddEvent);
+            }
+        });
         return root;
     }
 
