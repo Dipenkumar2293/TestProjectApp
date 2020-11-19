@@ -26,9 +26,10 @@ import java.util.Calendar;
  */
 public class AddEventFragment extends Fragment {
 
-    Button btnTime,btnDate;
-    static TextView time;
+    static TextView from;
+    static TextView to;
     static TextView date;
+    static boolean onclicked;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -76,21 +77,29 @@ public class AddEventFragment extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_add_event, container, false);
         // Inflate the layout for this fragment
-        btnTime = v.findViewById(R.id.timeBtn);
-        btnDate = v.findViewById(R.id.dateBtn);
-        time = v.findViewById(R.id.timeView);
+        from = v.findViewById(R.id.fromView);
+        to = v.findViewById(R.id.toView);
         date = v.findViewById(R.id.dateView);
 
 
-        btnTime.setOnClickListener(new View.OnClickListener() {
+        from.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                onclicked = true;
+                DialogFragment newFragment = new TimePickerFragment();
+                newFragment.show(getChildFragmentManager(), "timePicker");
+            }
+        });
+        to.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onclicked = false;
                 DialogFragment newFragment = new TimePickerFragment();
                 newFragment.show(getChildFragmentManager(), "timePicker");
             }
         });
 
-        btnDate.setOnClickListener(new View.OnClickListener() {
+        date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DialogFragment newFragment = new DatePickerFragment();
@@ -100,7 +109,6 @@ public class AddEventFragment extends Fragment {
         return v;
     }
     public static class TimePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener {
-        public static String timer;
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
             // Use the current time as the default values for the picker
@@ -111,14 +119,29 @@ public class AddEventFragment extends Fragment {
             // Create a new instance of TimePickerDialog and return it
             return new TimePickerDialog(getActivity(), this, hour, minute,
                     DateFormat.is24HourFormat(getActivity()));
+
         }
+
         @Override
         public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-            timer = String.valueOf(hourOfDay) + ":" + String.valueOf(minute);
-            //AddEventFragment fragment = (AddEventFragment)getParentFragmentManager().findFragmentById(R.id.addEventFragment);
-            //fragment.time.setText(timer);
-            time.setText(timer);
+           if(onclicked == true) {
+               if (minute < 10) {
+                   from.setText(hourOfDay + ":0" + minute);
+                   // String str = time.getText().toString();
+               } else {
+                   from.setText(hourOfDay + ":" + minute);
+               }
+           }else {
+               if (minute < 10) {
+                   to.setText(hourOfDay + ":0" + minute);
+                   // String str = time.getText().toString();
+               } else {
+                   to.setText(hourOfDay + ":" + minute);
+               }
+           }
         }
+
+
 
     }
     public static class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
@@ -137,8 +160,8 @@ public class AddEventFragment extends Fragment {
         }
 
         public void onDateSet(DatePicker view, int year, int month, int day) {
-            dater = String.valueOf(year) + "/" + String.valueOf(month) + "/" +  String.valueOf(day);
-            date.setText(dater);
+            date.setText(String.valueOf(year) + "/" + String.valueOf(month) + "/" +  String.valueOf(day));
+
         }
     }
 

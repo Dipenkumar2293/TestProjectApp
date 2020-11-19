@@ -21,4 +21,6 @@
     <string name="set_time">Set Time</string>
     <string name="textview1">TextView1</string>
     <string name="set_date">SET DATE</string>
+    <string name="from">From</string>
+    <string name="to">To</string>
 </resources>
