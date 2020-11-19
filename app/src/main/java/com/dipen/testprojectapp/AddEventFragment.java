@@ -114,7 +114,13 @@ public class AddEventFragment extends Fragment {
         }
         @Override
         public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-            timer = String.valueOf(hourOfDay) + ":" + String.valueOf(minute);
+            if (minute < 10) {
+                timer = String.valueOf(hourOfDay) + ":0" + String.valueOf(minute);
+            }
+            else {
+                timer = String.valueOf(hourOfDay) + ":" + String.valueOf(minute);
+            }
+            //timer = String.valueOf(hourOfDay) + ":" + String.valueOf(minute);
             //AddEventFragment fragment = (AddEventFragment)getParentFragmentManager().findFragmentById(R.id.addEventFragment);
             //fragment.time.setText(timer);
             time.setText(timer);
