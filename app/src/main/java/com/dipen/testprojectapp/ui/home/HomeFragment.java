@@ -24,18 +24,16 @@ import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 
 public class HomeFragment extends Fragment {
-    private HomeViewModel homeViewModel;
+     private HomeViewModel homeViewModel;
      ViewPager pager;
      PagerAdaper adapter;
      TabLayout mTabs;
      TabItem tab1, tab2, tab3;
      FloatingActionButton fab1;
 
-
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
+       homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
-        final TextView textView = root.findViewById(R.id.text_home);
         pager = root.findViewById(R.id.view_Pager);
         mTabs = root.findViewById(R.id.tab_layout);
         tab1 = root.findViewById(R.id.daily_tab);
@@ -45,32 +43,23 @@ public class HomeFragment extends Fragment {
         homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
-                textView.setText(s);
-                adapter = new PagerAdaper(getChildFragmentManager(),FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT,
-                        mTabs.getTabCount());
+                adapter = new PagerAdaper(getChildFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT,
+                mTabs.getTabCount());
                 pager.setAdapter(adapter);
-
-
                 mTabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
                     @Override
                     public void onTabSelected(TabLayout.Tab tab) {
                         pager.setCurrentItem(tab.getPosition());
-
                     }
-
                     @Override
                     public void onTabUnselected(TabLayout.Tab tab) {
-
                     }
                     @Override
                     public void onTabReselected(TabLayout.Tab tab) {
-
                     }
                 });
                 pager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabs));
             }
-
-
         });
         fab1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,6 +69,4 @@ public class HomeFragment extends Fragment {
         });
         return root;
     }
-
-
 }

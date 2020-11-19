@@ -7,6 +7,11 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CalendarView;
+import android.widget.DatePicker;
+import android.widget.Toast;
+
+import java.util.Calendar;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,6 +19,7 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class MonthlyFragment extends Fragment {
+    private DatePicker picker;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -58,7 +64,20 @@ public class MonthlyFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_monthly, container, false);
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_monthly, container, false);
+        picker = (DatePicker) view.findViewById(R.id.date_picker);
+        Calendar cal = Calendar.getInstance();
+        picker.init(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH),
+                new DatePicker.OnDateChangedListener() {
+                    @Override
+                    public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                        Toast.makeText(view.getContext(),"Date:-" + picker.getDayOfMonth()
+                        +"\n"+ "Month:-" + (picker.getMonth() + 1)+"\n" + "Year:-" + picker.getYear(),
+                                Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+        return view;
     }
 }
