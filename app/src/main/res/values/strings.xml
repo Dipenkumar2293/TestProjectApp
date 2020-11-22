@@ -31,6 +31,10 @@
     <string name="events">EVENTS</string>
     <string name="write_your_task">Write Your Task</string>
     <string name="add">ADD</string>
+    <string name="_00_01">00:00</string>
+    <string name="_00_00">00:00</string>
+    <string name="event_description">Event Description</string>
+    <string name="lines">LINES</string>
     <string-array name="weekly_list">
         <item>Education</item>
         <item>Fitness</item>
