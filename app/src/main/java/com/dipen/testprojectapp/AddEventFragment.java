@@ -12,10 +12,14 @@ import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import java.util.Calendar;
 
@@ -24,12 +28,13 @@ import java.util.Calendar;
  * Use the {@link AddEventFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class AddEventFragment extends Fragment {
+public class AddEventFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
     static TextView from;
     static TextView to;
     static TextView date;
     static boolean onclicked;
+    static Spinner spin;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -80,7 +85,7 @@ public class AddEventFragment extends Fragment {
         from = v.findViewById(R.id.fromView);
         to = v.findViewById(R.id.toView);
         date = v.findViewById(R.id.dateView);
-
+        spin = v.findViewById(R.id.list_spinner);
 
         from.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,8 +111,27 @@ public class AddEventFragment extends Fragment {
                 newFragment.show(getChildFragmentManager(), "datePicker");
             }
         });
+
+        ArrayAdapter<CharSequence>adapter = ArrayAdapter.createFromResource( getContext(),
+                R.array.weekly_list, android.R.layout.simple_spinner_dropdown_item);
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin.setAdapter(adapter);
+        spin.setOnItemSelectedListener(this);
+
         return v;
     }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        String text = parent.getItemAtPosition(position).toString();
+        Toast.makeText(parent.getContext(), text, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+
     public static class TimePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener {
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {

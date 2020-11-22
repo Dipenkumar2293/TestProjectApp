@@ -27,4 +27,15 @@
     <string name="set_date1">SET DATE</string>
     <string name="yyyy_m_d">yyyy/m/d</string>
     <string name="year_m_d">Year/m/d</string>
+    <string name="categories">CATEGORIES</string>
+    <string name="events">EVENTS</string>
+    <string name="write_your_task">Write Your Task</string>
+    <string name="add">ADD</string>
+    <string-array name="weekly_list">
+        <item>Education</item>
+        <item>Fitness</item>
+        <item>Profession</item>
+        <item>Personal</item>
+        <item>Others</item>
+    </string-array>
 </resources>

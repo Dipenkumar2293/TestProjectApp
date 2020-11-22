@@ -10,14 +10,14 @@
         android:id="@+id/fromView"
         android:layout_width="146dp"
         android:layout_height="44dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="16dp"
         android:background="#CACACA"
         android:gravity="center"
         android:hint="@string/from"
         android:textColor="#0B0B0B"
         android:textColorHint="#502E2E"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/toView"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/time_Title" />
 
@@ -25,67 +25,140 @@
         android:id="@+id/toView"
         android:layout_width="146dp"
         android:layout_height="44dp"
-        android:layout_marginStart="43dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="26dp"
         android:background="#CACACA"
         android:gravity="center"
         android:hint="@string/to"
         android:textColor="#0B0B0B"
         android:textColorHint="#502E2E"
-        android:textSize="18sp"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/fromView"
         app:layout_constraintTop_toBottomOf="@+id/time_Title" />
 
     <TextView
         android:id="@+id/dateView"
-        android:layout_width="411dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="88dp"
+        android:layout_width="146dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="12dp"
         android:background="#CACACA"
         android:gravity="center"
         android:hint="@string/year_m_d"
         android:textColor="#0B0B0B"
         android:textColorHint="#502E2E"
-        android:textSize="18sp"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fromView" />
+        app:layout_constraintTop_toBottomOf="@+id/date_Title" />
 
     <TextView
         android:id="@+id/time_Title"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="44dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="25dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="262dp"
         android:gravity="center|start"
         android:text="@string/set_time2"
         android:textColor="#176BC1"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/fromView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
 
     <TextView
         android:id="@+id/date_Title"
-        android:layout_width="411dp"
+        android:layout_width="wrap_content"
         android:layout_height="44dp"
-        android:layout_marginTop="23dp"
-        android:layout_marginBottom="21dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="25dp"
         android:gravity="center|start"
         android:text="@string/set_date1"
         android:textColor="#176BC1"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/dateView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fromView" />
+
+    <TextView
+        android:id="@+id/category_title"
+        android:layout_width="wrap_content"
+        android:layout_height="44dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="260dp"
+        android:gravity="center|start"
+        android:text="@string/categories"
+        android:textColor="#176BC1"
+        android:textSize="30sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fromView" />
+        app:layout_constraintTop_toBottomOf="@+id/dateView" />
+
+    <TextView
+        android:id="@+id/event_title"
+        android:layout_width="wrap_content"
+        android:layout_height="44dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="284dp"
+        android:gravity="center|start"
+        android:text="@string/events"
+        android:textColor="#176BC1"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/list_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:spinnerMode="dialog"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.028"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/category_title" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="26dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/write_your_task"
+        android:inputType="textShortMessage|textPersonName"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/event_title" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="0dp"
+        android:layout_height="61dp"
+        android:layout_marginStart="165dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="165dp"
+        android:text="@string/add"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.48"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/list_spinner" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
