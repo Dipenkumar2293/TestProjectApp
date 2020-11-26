@@ -34,6 +34,7 @@ public class AddEventFragment extends Fragment implements AdapterView.OnItemSele
     static TextView to;
 
 
+
     static TextView date;
     static boolean onclicked;
     static Spinner spin;
