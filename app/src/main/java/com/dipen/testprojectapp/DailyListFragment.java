@@ -3,6 +3,7 @@ package com.dipen.testprojectapp;
 import android.content.Context;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -25,6 +26,7 @@ import java.util.List;
 public class DailyListFragment extends Fragment {
 
      private EventsViewModel eventsViewModel;
+     private RecyclerView recyclerView;
 
     // TODO: Customize parameter argument names
 
@@ -46,31 +48,30 @@ public class DailyListFragment extends Fragment {
         return fragment;
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_daily_list_list, container, false);
-        RecyclerView recyclerView = view.findViewById(R.id.list);
+        recyclerView = view.findViewById(R.id.list);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setHasFixedSize(true);
 
-       final EventsAdapter adapter = new EventsAdapter();
+        return view;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        final EventsAdapter adapter = new EventsAdapter();
         recyclerView.setAdapter(adapter);
-        eventsViewModel = new ViewModelProvider(this).get(EventsViewModel.class);
-        eventsViewModel.getAllEvents().observe(this, new Observer<List<Events>>() {
+        eventsViewModel = new ViewModelProvider(getActivity()).get(EventsViewModel.class);
+        eventsViewModel.getAllEvents().observe(getViewLifecycleOwner(), new Observer<List<Events>>() {
             @Override
             public void onChanged(List<Events> events) {
                 adapter.setEventsList(events);
                 //Toast.makeText(getContext(),"Hi Guys!!", Toast.LENGTH_SHORT).show();
             }
         });
-
-        return view;
     }
 }

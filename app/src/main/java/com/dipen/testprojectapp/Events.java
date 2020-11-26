@@ -13,7 +13,7 @@ public class Events {
     private String  date;
     private String category;
 
-    public Events(String name, String  startTime, String endTime, String date, String category) {
+    public Events(String name, String startTime, String endTime, String date, String category) {
         this.name = name;
         this.startTime = startTime;
         this.endTime = endTime;

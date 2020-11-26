@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/alegreya_sans_extrabold_italic</item>
+        <item>@font/amarante</item>
+        <item>@font/autour_one</item>
+        <item>@font/bubblegum_sans</item>
+    </array>
+</resources>
