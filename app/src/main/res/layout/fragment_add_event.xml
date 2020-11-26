@@ -116,7 +116,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline6" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/bAdd"
         android:layout_width="178dp"
         android:layout_height="0dp"
         android:text="@string/add"

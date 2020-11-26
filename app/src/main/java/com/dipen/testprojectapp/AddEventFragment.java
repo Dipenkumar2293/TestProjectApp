@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LiveData;
 
 import android.text.format.DateFormat;
 import android.view.LayoutInflater;
@@ -22,6 +23,7 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import java.util.Calendar;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -32,12 +34,11 @@ public class AddEventFragment extends Fragment implements AdapterView.OnItemSele
 
     static TextView from;
     static TextView to;
-
-
-
+    static TextView desc;
     static TextView date;
     static boolean onclicked;
     static Spinner spin;
+    private Button add;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -53,14 +54,6 @@ public class AddEventFragment extends Fragment implements AdapterView.OnItemSele
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment AddEventFragment.
-     */
     // TODO: Rename and change types and number of parameters
     public static AddEventFragment newInstance(String param1, String param2) {
         AddEventFragment fragment = new AddEventFragment();
@@ -89,6 +82,14 @@ public class AddEventFragment extends Fragment implements AdapterView.OnItemSele
         to = v.findViewById(R.id.toView);
         date = v.findViewById(R.id.dateView);
         spin = v.findViewById(R.id.list_spinner);
+        add = v.findViewById(R.id.bAdd);
+
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                saveEvent();
+            }
+        });
 
         from.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -122,6 +123,14 @@ public class AddEventFragment extends Fragment implements AdapterView.OnItemSele
         spin.setOnItemSelectedListener(this);
 
         return v;
+    }
+
+    public void saveEvent() {
+        String description = desc.getText().toString();
+        String fromTime = from.getText().toString();
+        String toTime = to.getText().toString();
+        String dateT = date.getText().toString();
+        String cat = spin.getSelectedItem().toString();
     }
 
     @Override

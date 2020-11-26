@@ -28,11 +28,6 @@ public class DailyListFragment extends Fragment {
 
     // TODO: Customize parameter argument names
 
-
-    /**
-     * Mandatory empty constructor for the fragment manager to instantiate the
-     * fragment (e.g. upon screen orientation changes).
-     */
     public DailyListFragment() {
     }
 
@@ -63,7 +58,7 @@ public class DailyListFragment extends Fragment {
        final EventsAdapter adapter = new EventsAdapter();
         recyclerView.setAdapter(adapter);
         eventsViewModel = new ViewModelProvider(this).get(EventsViewModel.class);
-        eventsViewModel.getAllEvents().observe(this, new Observer<List<Events>>() {
+        eventsViewModel.getAllEvents().observe(getViewLifecycleOwner(), new Observer<List<Events>>() {
             @Override
             public void onChanged(List<Events> events) {
                 adapter.setEventsList(events);
