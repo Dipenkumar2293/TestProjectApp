@@ -157,22 +157,22 @@ public class AddEventFragment extends Fragment implements AdapterView.OnItemSele
             Toast.makeText(requireContext(), "Successfully Added",Toast.LENGTH_SHORT).show();
         }
         else{
-            Toast.makeText(requireContext(), "Data Not Added",Toast.LENGTH_SHORT).show();
+            Toast.makeText(requireContext(), "Please Enter All Data",Toast.LENGTH_SHORT).show();
         }
 
     }
     private boolean checkInput(String eventName, String sTime, String etime,String dates,String category){
-        if(!(TextUtils.isEmpty(eventName) && TextUtils.isEmpty(sTime) && TextUtils.isEmpty(etime)
-               && TextUtils.isEmpty(dates) && TextUtils.isEmpty(category))){
-            return true;
-        }else
+        if ((TextUtils.isEmpty(eventName) || TextUtils.isEmpty(sTime) || TextUtils.isEmpty(etime)
+               || TextUtils.isEmpty(dates) || TextUtils.isEmpty(category))){
             return false;
+        }
+        return true;
     }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String text = parent.getItemAtPosition(position).toString();
-        Toast.makeText(parent.getContext(), text, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(parent.getContext(), text, Toast.LENGTH_SHORT).show();
     }
 
     @Override
