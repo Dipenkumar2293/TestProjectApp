@@ -30,6 +30,7 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventHolde
         holder.eTime.setText(currentEvent.getEndTime());
         holder.eventText.setText(currentEvent.getName());
         holder.dateText.setText(currentEvent.getDate());
+        holder.categoryList.setText(currentEvent.getCategory());
 
     }
 
@@ -42,12 +43,15 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventHolde
         this.eventsList = eventsList;
         notifyDataSetChanged();
     }
-
+    public Events getEventAt(int position){
+        return eventsList.get(position);
+    }
     class EventHolder extends RecyclerView.ViewHolder{
         private TextView sTime;
         private TextView eTime;
         private TextView dateText;
         private TextView eventText;
+        private TextView categoryList;
 
 
         public EventHolder(@NonNull View itemView) {
@@ -56,6 +60,7 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventHolde
             eTime = itemView.findViewById(R.id.endTimer);
             eventText = itemView.findViewById(R.id.event_Content);
             dateText = itemView.findViewById(R.id.dateShow);
+            categoryList = itemView.findViewById(R.id.categ_show);
         }
     }
 }
