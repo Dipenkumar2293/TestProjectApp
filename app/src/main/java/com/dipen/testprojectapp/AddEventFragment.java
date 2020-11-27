@@ -155,6 +155,10 @@ public class AddEventFragment extends Fragment implements AdapterView.OnItemSele
             Events data = new Events(eventName,fromTime,toTime,newDate,category);
             evModel.insert(data);
             Toast.makeText(requireContext(), "Successfully Added",Toast.LENGTH_SHORT).show();
+            edit.setText("");
+            from.setText("");
+            to.setText("");
+            date.setText("");
         }
         else{
             Toast.makeText(requireContext(), "Please Enter All Data",Toast.LENGTH_SHORT).show();
