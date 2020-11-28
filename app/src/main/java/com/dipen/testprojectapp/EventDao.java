@@ -20,4 +20,7 @@ public interface EventDao {
    /* void insert (Events events);*/
     @Query("SELECT * FROM event_table ORDER BY date ASC")
     LiveData<List<Events>>getAllEvents();
+
+    @Query("SELECT * FROM event_table WHERE date LIKE :today ORDER BY startTime ASC")
+    LiveData<List<Events>>getDailyEvents(String today);
 }

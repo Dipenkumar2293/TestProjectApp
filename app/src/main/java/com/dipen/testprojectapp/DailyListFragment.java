@@ -85,11 +85,10 @@ public class DailyListFragment extends Fragment {
 
         recyclerView.setAdapter(adapter);
         eventsViewModel = new ViewModelProvider(getActivity()).get(EventsViewModel.class);
-        eventsViewModel.getAllEvents().observe(getViewLifecycleOwner(), new Observer<List<Events>>() {
+        eventsViewModel.getDailyEvents().observe(getViewLifecycleOwner(), new Observer<List<Events>>() {
             @Override
             public void onChanged(List<Events> events) {
                 adapter.setEventsList(events);
-                //Toast.makeText(getContext(),"Hi Guys!!", Toast.LENGTH_SHORT).show();
             }
         });
     }

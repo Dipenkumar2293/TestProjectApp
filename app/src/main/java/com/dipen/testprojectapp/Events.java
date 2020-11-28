@@ -2,6 +2,9 @@ package com.dipen.testprojectapp;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+import androidx.room.TypeConverter;
+
+import java.util.Date;
 
 @Entity(tableName = "event_table")
 public class Events {

@@ -139,8 +139,6 @@ public class AddEventFragment extends Fragment implements AdapterView.OnItemSele
         evModel.getAllEvents().observe(getViewLifecycleOwner(), new Observer<List<Events>>() {
             @Override
             public void onChanged(List<Events> events) {
-
-                //Toast.makeText(getContext(),"Hi Guys!!", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -236,7 +234,7 @@ public class AddEventFragment extends Fragment implements AdapterView.OnItemSele
         }
 
         public void onDateSet(DatePicker view, int year, int month, int day) {
-            date.setText(String.valueOf(year) + "/" + String.valueOf(month) + "/" +  String.valueOf(day));
+            date.setText(String.valueOf(year) + "-" + String.valueOf(month + 1) + "-" +  String.valueOf(day));
 
         }
     }
