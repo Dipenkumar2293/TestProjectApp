@@ -7,10 +7,12 @@
     android:name="com.dipen.testprojectapp.WeeklyFragment"
     tools:context=".WeeklyFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/weekly_list"
+        android:name="com.dipen.testprojectapp.WeeklyFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
-
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        tools:context=".WeeklyFragment"/>
 </FrameLayout>

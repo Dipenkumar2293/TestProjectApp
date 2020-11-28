@@ -7,7 +7,6 @@ import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
-import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 @Database(entities = Events.class, version = 1)
@@ -43,12 +42,6 @@ public abstract class EventDatabase extends RoomDatabase {
         }
         @Override
         protected Void doInBackground(Void... voids) {
-            eventDao.insert(new Events("Event 1", "00:00","00:00","yyyy/mm/d",
-                    "category 1"));
-            eventDao.insert(new Events("Event 2", "00:00","00:00","yyyy/mm/d",
-                    "category 2"));
-            eventDao.insert(new Events("Event 3", "00:00","00:00","yyyy/mm/d",
-                    "category 3"));
             return null;
         }
     }

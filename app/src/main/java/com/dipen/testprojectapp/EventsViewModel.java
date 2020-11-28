@@ -13,12 +13,14 @@ public class EventsViewModel extends AndroidViewModel {
     private EventRepository repository;
     private LiveData<List<Events>> allEvents;
     private LiveData<List<Events>> dailyEvents;
+    private LiveData<List<Events>> weeklyEvents;
 
     public EventsViewModel(@NonNull Application application) {
         super(application);
         repository = new EventRepository(application);
         allEvents = repository.getAllEvents();
         dailyEvents = repository.getDailyEvents();
+        weeklyEvents = repository.getWeeklyEvents();
     }
     public void insert(Events events){
         repository.insert(events);
@@ -36,5 +38,9 @@ public class EventsViewModel extends AndroidViewModel {
 
     public LiveData<List<Events>> getDailyEvents() {
         return dailyEvents;
+    }
+
+    public LiveData<List<Events>> getWeeklyEvents() {
+        return weeklyEvents;
     }
 }

@@ -31,11 +31,6 @@ import android.widget.Toast;
 import java.util.Calendar;
 import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link AddEventFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class AddEventFragment extends Fragment implements AdapterView.OnItemSelectedListener {
     private EventsViewModel evModel;
     private Button addBtn;
@@ -59,16 +54,6 @@ public class AddEventFragment extends Fragment implements AdapterView.OnItemSele
     public AddEventFragment() {
         // Required empty public constructor
     }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment AddEventFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static AddEventFragment newInstance(String param1, String param2) {
         AddEventFragment fragment = new AddEventFragment();
         Bundle args = new Bundle();
@@ -234,7 +219,15 @@ public class AddEventFragment extends Fragment implements AdapterView.OnItemSele
         }
 
         public void onDateSet(DatePicker view, int year, int month, int day) {
-            date.setText(String.valueOf(year) + "-" + String.valueOf(month + 1) + "-" +  String.valueOf(day));
+            String mDay;
+            if (day < 10) {
+                mDay = "0" + String.valueOf(day);
+            }
+            else {
+                mDay = String.valueOf(day);
+            }
+
+            date.setText(String.valueOf(year) + "-" + String.valueOf(month + 1) + "-" +  mDay);
 
         }
     }
