@@ -15,6 +15,7 @@ import androidx.navigation.Navigation;
 
 import android.text.TextUtils;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -134,23 +135,33 @@ public class AddEventFragment extends Fragment implements AdapterView.OnItemSele
         String newDate = date.getText().toString();
         String category = spin.getSelectedItem().toString();
 
+        int end = Integer.parseInt(toTime.replace(":", ""));
+        int start = Integer.parseInt(fromTime.replace(":", ""));
+
         if(checkInput(eventName,fromTime,toTime,newDate,category)){
             Events data = new Events(eventName,fromTime,toTime,newDate,category);
             evModel.insert(data);
             Toast.makeText(requireContext(), "Successfully Added",Toast.LENGTH_SHORT).show();
+
             edit.setText("");
             from.setText("");
             to.setText("");
             date.setText("");
+        }
+        else if (start > end){
+            Toast.makeText(requireContext(), "Start time cannot be after end", Toast.LENGTH_SHORT).show();
         }
         else{
             Toast.makeText(requireContext(), "Please Enter All Data",Toast.LENGTH_SHORT).show();
         }
 
     }
-    private boolean checkInput(String eventName, String sTime, String etime,String dates,String category){
+    private boolean checkInput(String eventName, String sTime, String etime, String dates, String category){
+        int start = Integer.parseInt(sTime.replace(":", ""));
+        int end = Integer.parseInt(etime.replace(":", ""));
+
         if ((TextUtils.isEmpty(eventName) || TextUtils.isEmpty(sTime) || TextUtils.isEmpty(etime)
-               || TextUtils.isEmpty(dates) || TextUtils.isEmpty(category))){
+               || TextUtils.isEmpty(dates) || TextUtils.isEmpty(category) || start > end)){
             return false;
         }
         return true;
@@ -159,7 +170,6 @@ public class AddEventFragment extends Fragment implements AdapterView.OnItemSele
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String text = parent.getItemAtPosition(position).toString();
-        //Toast.makeText(parent.getContext(), text, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -186,14 +196,12 @@ public class AddEventFragment extends Fragment implements AdapterView.OnItemSele
            if(onclicked == true) {
                if (minute < 10) {
                    from.setText(hourOfDay + ":0" + minute);
-                   // String str = time.getText().toString();
                } else {
                    from.setText(hourOfDay + ":" + minute);
                }
            }else {
                if (minute < 10) {
                    to.setText(hourOfDay + ":0" + minute);
-                   // String str = time.getText().toString();
                } else {
                    to.setText(hourOfDay + ":" + minute);
                }
@@ -204,7 +212,6 @@ public class AddEventFragment extends Fragment implements AdapterView.OnItemSele
 
     }
     public static class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
-        public static String dater;
 
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -220,6 +227,8 @@ public class AddEventFragment extends Fragment implements AdapterView.OnItemSele
 
         public void onDateSet(DatePicker view, int year, int month, int day) {
             String mDay;
+            String mMonth;
+
             if (day < 10) {
                 mDay = "0" + String.valueOf(day);
             }
@@ -227,7 +236,16 @@ public class AddEventFragment extends Fragment implements AdapterView.OnItemSele
                 mDay = String.valueOf(day);
             }
 
-            date.setText(String.valueOf(year) + "-" + String.valueOf(month + 1) + "-" +  mDay);
+            if (month < 9) {
+                month += 1;
+                mMonth = "0" + String.valueOf(month).trim();
+            }
+            else {
+                month += 1;
+                mMonth = String.valueOf(month);
+            }
+
+            date.setText(String.valueOf(year) + "-" + mMonth + "-" +  mDay);
 
         }
     }
