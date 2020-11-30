@@ -13,14 +13,22 @@ public class EventsViewModel extends AndroidViewModel {
     private EventRepository repository;
     private LiveData<List<Events>> allEvents;
     private LiveData<List<Events>> dailyEvents;
-    private LiveData<List<Events>> weeklyEvents;
+    private LiveData<List<Events>> ed_weeklyEvents;
+    private LiveData<List<Events>> pers_weeklyEvents;
+    private LiveData<List<Events>> pro_weeklyEvents;
+    private LiveData<List<Events>> fit_weeklyEvents;
+    private LiveData<List<Events>> oth_weeklyEvents;
 
     public EventsViewModel(@NonNull Application application) {
         super(application);
         repository = new EventRepository(application);
         allEvents = repository.getAllEvents();
         dailyEvents = repository.getDailyEvents();
-        weeklyEvents = repository.getWeeklyEvents();
+        ed_weeklyEvents = repository.getEdWeeklyEvents();
+        pers_weeklyEvents = repository.getPersWeeklyEvents();
+        pro_weeklyEvents = repository.getProWeeklyEvents();
+        fit_weeklyEvents = repository.getFitWeeklyEvents();
+        oth_weeklyEvents = repository.getOthWeeklyEvents();
     }
     public void insert(Events events){
         repository.insert(events);
@@ -40,7 +48,23 @@ public class EventsViewModel extends AndroidViewModel {
         return dailyEvents;
     }
 
-    public LiveData<List<Events>> getWeeklyEvents() {
-        return weeklyEvents;
+    public LiveData<List<Events>> getEdWeeklyEvents() {
+        return ed_weeklyEvents;
+    }
+
+    public LiveData<List<Events>> getPersWeeklyEvents() {
+        return pers_weeklyEvents;
+    }
+
+    public LiveData<List<Events>> getProWeeklyEvents() {
+        return pro_weeklyEvents;
+    }
+
+    public LiveData<List<Events>> getFitWeeklyEvents() {
+        return fit_weeklyEvents;
+    }
+
+    public LiveData<List<Events>> getOthWeeklyEvents() {
+        return oth_weeklyEvents;
     }
 }

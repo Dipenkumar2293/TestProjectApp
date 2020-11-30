@@ -12,7 +12,11 @@ public class EventRepository {
     private EventDao eventDao;
     private LiveData<List<Events>> allEvents;
     private LiveData<List<Events>> dailyEvents;
-    private LiveData<List<Events>> weeklyEvents;
+    private LiveData<List<Events>> ed_weeklyEvents;
+    private LiveData<List<Events>> pers_weeklyEvents;
+    private LiveData<List<Events>> pro_weeklyEvents;
+    private LiveData<List<Events>> fit_weeklyEvents;
+    private LiveData<List<Events>> oth_weeklyEvents;
 
     public EventRepository(Application application){
 
@@ -29,7 +33,11 @@ public class EventRepository {
         eventDao = eventDatabase.eventDao();
         allEvents = eventDao.getAllEvents();
         dailyEvents = eventDao.getDailyEvents(today);
-        weeklyEvents = eventDao.getWeeklyEvents(today, plus1Day, plus2Day, plus3Day, plus4Day, plus5Day, plus6Day);
+        ed_weeklyEvents = eventDao.getEdWeeklyEvents(today, plus1Day, plus2Day, plus3Day, plus4Day, plus5Day, plus6Day);
+        pers_weeklyEvents = eventDao.getPersWeeklyEvents(today, plus1Day, plus2Day, plus3Day, plus4Day, plus5Day, plus6Day);
+        pro_weeklyEvents = eventDao.getProWeeklyEvents(today, plus1Day, plus2Day, plus3Day, plus4Day, plus5Day, plus6Day);
+        fit_weeklyEvents = eventDao.getFitWeeklyEvents(today, plus1Day, plus2Day, plus3Day, plus4Day, plus5Day, plus6Day);
+        oth_weeklyEvents = eventDao.getOthWeeklyEvents(today, plus1Day, plus2Day, plus3Day, plus4Day, plus5Day, plus6Day);
     }
     public void insert(Events events){
         new InsertEventAsyncTask(eventDao).execute(events);
@@ -48,8 +56,24 @@ public class EventRepository {
         return dailyEvents;
     }
 
-    public LiveData<List<Events>> getWeeklyEvents() {
-        return weeklyEvents;
+    public LiveData<List<Events>> getEdWeeklyEvents() {
+        return ed_weeklyEvents;
+    }
+
+    public LiveData<List<Events>> getPersWeeklyEvents() {
+        return pers_weeklyEvents;
+    }
+
+    public LiveData<List<Events>> getProWeeklyEvents() {
+        return pro_weeklyEvents;
+    }
+
+    public LiveData<List<Events>> getFitWeeklyEvents() {
+        return fit_weeklyEvents;
+    }
+
+    public LiveData<List<Events>> getOthWeeklyEvents() {
+        return oth_weeklyEvents;
     }
 
     private static class InsertEventAsyncTask extends AsyncTask<Events,Void,Void> {
