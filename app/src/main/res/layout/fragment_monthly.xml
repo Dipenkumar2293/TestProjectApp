@@ -28,12 +28,21 @@
         android:dayOfWeekBackground="#8C2887"
         android:forceDarkAllowed="true"
         android:headerBackground="@color/design_default_color_secondary_variant"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.084" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/montlhy_list_frag"
+        android:name="com.dipen.testprojectapp.MonthlyListFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/date_picker"
+        tools:layout="@layout/fragment_monthly_list_list" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
