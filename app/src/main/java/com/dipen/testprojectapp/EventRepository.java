@@ -17,6 +17,7 @@ public class EventRepository {
     private LiveData<List<Events>> pro_weeklyEvents;
     private LiveData<List<Events>> fit_weeklyEvents;
     private LiveData<List<Events>> oth_weeklyEvents;
+    private LiveData<List<Events>> examEvents;
 
     public EventRepository(Application application){
 
@@ -38,6 +39,7 @@ public class EventRepository {
         pro_weeklyEvents = eventDao.getProWeeklyEvents(today, plus1Day, plus2Day, plus3Day, plus4Day, plus5Day, plus6Day);
         fit_weeklyEvents = eventDao.getFitWeeklyEvents(today, plus1Day, plus2Day, plus3Day, plus4Day, plus5Day, plus6Day);
         oth_weeklyEvents = eventDao.getOthWeeklyEvents(today, plus1Day, plus2Day, plus3Day, plus4Day, plus5Day, plus6Day);
+        examEvents = eventDao.getExamEvents();
     }
     public void insert(Events events){
         new InsertEventAsyncTask(eventDao).execute(events);
@@ -74,6 +76,10 @@ public class EventRepository {
 
     public LiveData<List<Events>> getOthWeeklyEvents() {
         return oth_weeklyEvents;
+    }
+
+    public LiveData<List<Events>> getExamEvents() {
+        return examEvents;
     }
 
     private static class InsertEventAsyncTask extends AsyncTask<Events,Void,Void> {
