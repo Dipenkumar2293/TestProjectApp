@@ -67,6 +67,14 @@ public class DailyListFragment extends Fragment {
             {
                 eventsViewModel.delete(adapter.getEventAt(viewHolder.getAdapterPosition()));
                 Toast.makeText(getContext(), "Event Deleted", Toast.LENGTH_SHORT).show();
+
+                /*if(direction == ItemTouchHelper.RIGHT){
+                    eventsViewModel.delete(adapter.getEventAt(viewHolder.getAdapterPosition()));
+                    Toast.makeText(getContext(), "Event Deleted", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    eventsViewModel.setEventID(adapter.getEventAt(viewHolder.getAdapterPosition()));
+                }*/
             }
         }).attachToRecyclerView(recyclerView);
 

@@ -5,6 +5,7 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 import java.util.List;
 
@@ -18,6 +19,7 @@ public class EventsViewModel extends AndroidViewModel {
     private LiveData<List<Events>> pro_weeklyEvents;
     private LiveData<List<Events>> fit_weeklyEvents;
     private LiveData<List<Events>> oth_weeklyEvents;
+    private MutableLiveData<List<Events>> priorityEvents;
 
     public EventsViewModel(@NonNull Application application) {
         super(application);
@@ -29,6 +31,7 @@ public class EventsViewModel extends AndroidViewModel {
         pro_weeklyEvents = repository.getProWeeklyEvents();
         fit_weeklyEvents = repository.getFitWeeklyEvents();
         oth_weeklyEvents = repository.getOthWeeklyEvents();
+        //priorityEvents = repository.getPriorityEvents();
     }
     public void insert(Events events){
         repository.insert(events);
@@ -39,6 +42,10 @@ public class EventsViewModel extends AndroidViewModel {
     public void delete(Events events){
         repository.delete(events);
     }
+
+    /*public void setEventID(Events events){
+        priorityEvents.
+    }*/
 
     public LiveData<List<Events>> getAllEvents() {
         return allEvents;
@@ -66,5 +73,9 @@ public class EventsViewModel extends AndroidViewModel {
 
     public LiveData<List<Events>> getOthWeeklyEvents() {
         return oth_weeklyEvents;
+    }
+
+    public LiveData<List<Events>> getPriorityEvents() {
+        return priorityEvents;
     }
 }

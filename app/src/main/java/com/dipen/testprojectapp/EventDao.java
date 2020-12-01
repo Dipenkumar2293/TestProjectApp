@@ -43,4 +43,7 @@ public interface EventDao {
     @Query("SELECT * FROM event_table WHERE category='Others' and (date LIKE :today or date LIKE :plusOne or date LIKE :plusTwo or  date LIKE :plusThree or date LIKE :plusFour or date LIKE :plusFive or date LIKE :plusSix) ORDER BY date ASC")
     LiveData<List<Events>>getOthWeeklyEvents(String today, String plusOne, String plusTwo, String plusThree, String
             plusFour, String plusFive, String plusSix);
+
+    @Query("SELECT * FROM event_table WHERE id LIKE :eventID ORDER BY id ASC")
+    LiveData<Events>getPriorityEvent(int eventID);
 }

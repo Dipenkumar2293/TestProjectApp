@@ -17,6 +17,9 @@ public class EventRepository {
     private LiveData<List<Events>> pro_weeklyEvents;
     private LiveData<List<Events>> fit_weeklyEvents;
     private LiveData<List<Events>> oth_weeklyEvents;
+    private LiveData<List<Events>> priorityEvents;
+
+    public int eventID = 1;
 
     public EventRepository(Application application){
 
@@ -75,6 +78,11 @@ public class EventRepository {
     public LiveData<List<Events>> getOthWeeklyEvents() {
         return oth_weeklyEvents;
     }
+
+    /*public LiveData<List<Events>> getPriorityEvents(){
+        priorityEvents = eventDao.getPriorityEvent(eventID);
+        return priorityEvents;
+    }*/
 
     private static class InsertEventAsyncTask extends AsyncTask<Events,Void,Void> {
         private  EventDao eventDao;
