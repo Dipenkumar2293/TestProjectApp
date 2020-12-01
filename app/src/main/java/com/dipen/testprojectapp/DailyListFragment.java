@@ -65,16 +65,17 @@ public class DailyListFragment extends Fragment {
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction)
             {
-                eventsViewModel.delete(adapter.getEventAt(viewHolder.getAdapterPosition()));
-                Toast.makeText(getContext(), "Event Deleted", Toast.LENGTH_SHORT).show();
+                /*eventsViewModel.delete(adapter.getEventAt(viewHolder.getAdapterPosition()));
+                Toast.makeText(getContext(), "Event Deleted", Toast.LENGTH_SHORT).show();*/
 
-                /*if(direction == ItemTouchHelper.RIGHT){
+                if(direction == ItemTouchHelper.RIGHT){
                     eventsViewModel.delete(adapter.getEventAt(viewHolder.getAdapterPosition()));
                     Toast.makeText(getContext(), "Event Deleted", Toast.LENGTH_SHORT).show();
                 }
-                else{
-                    eventsViewModel.setEventID(adapter.getEventAt(viewHolder.getAdapterPosition()));
-                }*/
+                else if (direction == ItemTouchHelper.LEFT){
+                    eventsViewModel.update(adapter.getEventAt(viewHolder.getAdapterPosition()));
+                    Toast.makeText(getContext(), "Priority List Updated", Toast.LENGTH_SHORT).show();
+                }
             }
         }).attachToRecyclerView(recyclerView);
 

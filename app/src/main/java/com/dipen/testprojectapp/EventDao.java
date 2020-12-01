@@ -1,5 +1,7 @@
 package com.dipen.testprojectapp;
 
+import android.security.keystore.StrongBoxUnavailableException;
+
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
@@ -44,6 +46,6 @@ public interface EventDao {
     LiveData<List<Events>>getOthWeeklyEvents(String today, String plusOne, String plusTwo, String plusThree, String
             plusFour, String plusFive, String plusSix);
 
-    @Query("SELECT * FROM event_table WHERE id LIKE :eventID ORDER BY id ASC")
-    LiveData<Events>getPriorityEvent(int eventID);
+    @Query("SELECT * from event_table WHERE isPriority='yes' ORDER BY date ASC")
+    LiveData<List<Events>>getPriorityEvents();
 }

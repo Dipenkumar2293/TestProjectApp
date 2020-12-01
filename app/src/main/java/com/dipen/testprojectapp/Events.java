@@ -15,13 +15,15 @@ public class Events {
     private String  endTime;
     private String  date;
     private String category;
+    private String isPriority;
 
-    public Events(String name, String startTime, String endTime, String date, String category) {
+    public Events(String name, String startTime, String endTime, String date, String category, String isPriority) {
         this.name = name;
         this.startTime = startTime;
         this.endTime = endTime;
         this.date = date;
         this.category = category;
+        this.isPriority = isPriority;
     }
 
     public void setId(int id) {
@@ -51,4 +53,8 @@ public class Events {
     public String getCategory() {
         return category;
     }
+
+    public String getPriority(){ return isPriority; }
+
+    public void setPriority(String priority){ this.isPriority = priority; }
 }

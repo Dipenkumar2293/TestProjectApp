@@ -48,7 +48,7 @@
 
     <fragment
         android:id="@+id/nav_slideshow"
-        android:name="com.dipen.testprojectapp.ui.slideshow.SlideshowFragment"
+        android:name="com.dipen.testprojectapp.PriorityListFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
     <fragment

@@ -139,7 +139,7 @@ public class AddEventFragment extends Fragment implements AdapterView.OnItemSele
         int start = Integer.parseInt(fromTime.replace(":", ""));
 
         if(checkInput(eventName,fromTime,toTime,newDate,category)){
-            Events data = new Events(eventName,fromTime,toTime,newDate,category);
+            Events data = new Events(eventName,fromTime,toTime,newDate,category, "no");
             evModel.insert(data);
             Toast.makeText(requireContext(), "Successfully Added",Toast.LENGTH_SHORT).show();
 

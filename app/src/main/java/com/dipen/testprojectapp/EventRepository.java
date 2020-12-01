@@ -2,6 +2,7 @@ package com.dipen.testprojectapp;
 
 import android.app.Application;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 
@@ -41,11 +42,14 @@ public class EventRepository {
         pro_weeklyEvents = eventDao.getProWeeklyEvents(today, plus1Day, plus2Day, plus3Day, plus4Day, plus5Day, plus6Day);
         fit_weeklyEvents = eventDao.getFitWeeklyEvents(today, plus1Day, plus2Day, plus3Day, plus4Day, plus5Day, plus6Day);
         oth_weeklyEvents = eventDao.getOthWeeklyEvents(today, plus1Day, plus2Day, plus3Day, plus4Day, plus5Day, plus6Day);
+        priorityEvents = eventDao.getPriorityEvents();
     }
     public void insert(Events events){
         new InsertEventAsyncTask(eventDao).execute(events);
     }
     public void update(Events events){
+        events.setPriority("yes");
+        Log.d("priority", String.valueOf(events.getPriority()));
         new UpdateEventAsyncTask(eventDao).execute(events);
     }
     public void delete(Events events){
@@ -79,6 +83,7 @@ public class EventRepository {
         return oth_weeklyEvents;
     }
 
+    public LiveData<List<Events>> getPriorityEvents() {return priorityEvents; }
     /*public LiveData<List<Events>> getPriorityEvents(){
         priorityEvents = eventDao.getPriorityEvent(eventID);
         return priorityEvents;
