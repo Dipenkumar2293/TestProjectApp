@@ -102,8 +102,8 @@
 
         <ImageView
             android:id="@+id/imageView4"
-            android:layout_width="wrap_content"
-            android:layout_height="28dp"
+            android:layout_width="19dp"
+            android:layout_height="27dp"
             android:layout_alignParentTop="true"
             android:layout_marginStart="5dp"
             android:layout_marginTop="4dp"
