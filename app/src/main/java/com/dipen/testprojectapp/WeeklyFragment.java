@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 
 import java.util.List;
@@ -23,6 +25,7 @@ public class WeeklyFragment extends Fragment {
     final EventsAdapter adapter = new EventsAdapter();
     private EventsViewModel eventsViewModel;
     private RecyclerView recyclerView;
+    private Button Ed, Pro, Per, Fit, Other;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -60,39 +63,46 @@ public class WeeklyFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_weekly, container, false);
+        Ed = view.findViewById(R.id.bEd);
+        Pro = view.findViewById(R.id.bPro);
+        Per = view.findViewById(R.id.bPer);
+        Fit = view.findViewById(R.id.bFit);
+        Other = view.findViewById(R.id.bOth);
 
-        recyclerView = view.findViewById(R.id.weekly_list);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setHasFixedSize(true);
-
-        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,
-                ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+        Ed.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
-                return false;
-            }
-
-            @Override
-            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                eventsViewModel.delete(adapter.getEventAt(viewHolder.getAdapterPosition()));
-                Toast.makeText(getContext(), "Event Deleted", Toast.LENGTH_SHORT).show();
-            }
-        }).attachToRecyclerView(recyclerView);
-
-        return view;
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
-        recyclerView.setAdapter(adapter);
-        eventsViewModel = new ViewModelProvider(getActivity()).get(EventsViewModel.class);
-        eventsViewModel.getWeeklyEvents().observe(getViewLifecycleOwner(), new Observer<List<Events>>() {
-            @Override
-            public void onChanged(List<Events> events) {
-                adapter.setEventsList(events);
+            public void onClick(View v) {
+                Navigation.findNavController(view).navigate(R.id.weeklyEd);
             }
         });
+
+        Pro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(view).navigate(R.id.weeklyProfessional);
+            }
+        });
+
+        Per.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(view).navigate(R.id.weeklyPersonal);
+            }
+        });
+
+        Fit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(view).navigate(R.id.weeklyFitness);
+            }
+        });
+
+        Other.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(view).navigate(R.id.weeklyOther);
+            }
+        });
+        return view;
     }
-    }
+}
