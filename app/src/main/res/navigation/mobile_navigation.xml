@@ -42,7 +42,7 @@
 
     <fragment
         android:id="@+id/nav_gallery"
-        android:name="com.dipen.testprojectapp.ui.gallery.GalleryFragment"
+        android:name="com.dipen.testprojectapp.ExamsListFragment"
         android:label="@string/menu_gallery"
         tools:layout="@layout/fragment_gallery" />
 
