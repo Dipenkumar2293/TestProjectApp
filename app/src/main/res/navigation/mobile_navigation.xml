@@ -3,8 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@id/nav_home">
 
+    <fragment
+        android:id="@+id/weeklyFragment"
+        android:name="com.dipen.testprojectapp.WeeklyFragment"
+        android:label="fragment_weekly"
+        tools:layout="@layout/fragment_weekly"/>
+    <fragment
+        android:id="@+id/educationListFragment"
+        android:name="com.dipen.testprojectapp.EducationListFragment"
+        android:label="fragment_education_list_list"
+        tools:layout="@layout/fragment_education_list_list" />
     <fragment
         android:id="@+id/nav_home"
         android:name="com.dipen.testprojectapp.ui.home.HomeFragment"
@@ -13,6 +23,21 @@
        <action
             android:id="@+id/NavigateToAddEvent"
             app:destination="@id/addEventFragment" />
+        <action
+            android:id="@+id/weeklyEd"
+            app:destination="@id/educationListFragment" />
+        <action
+            android:id="@+id/weeklyProfessional"
+            app:destination="@id/professionalListFragment" />
+        <action
+            android:id="@+id/weeklyPersonal"
+            app:destination="@id/personalListFragment" />
+        <action
+            android:id="@+id/weeklyFitness"
+            app:destination="@id/fitnessListFragment" />
+        <action
+            android:id="@+id/weeklyOther"
+            app:destination="@id/othersListFragment2" />
     </fragment>
 
     <fragment
@@ -31,4 +56,24 @@
         android:name="com.dipen.testprojectapp.AddEventFragment"
         android:label="Add Events"
         tools:layout="@layout/fragment_add_event" />
+    <fragment
+        android:id="@+id/personalListFragment"
+        android:name="com.dipen.testprojectapp.PersonalListFragment"
+        android:label="fragment_personal_list_list"
+        tools:layout="@layout/fragment_personal_list_list" />
+    <fragment
+        android:id="@+id/professionalListFragment"
+        android:name="com.dipen.testprojectapp.ProfessionalListFragment"
+        android:label="fragment_professional_list_list"
+        tools:layout="@layout/fragment_professional_list_list" />
+    <fragment
+        android:id="@+id/fitnessListFragment"
+        android:name="com.dipen.testprojectapp.FitnessListFragment"
+        android:label="fragment_fitness_list_list"
+        tools:layout="@layout/fragment_fitness_list_list" />
+    <fragment
+        android:id="@+id/othersListFragment2"
+        android:name="com.dipen.testprojectapp.OthersListFragment"
+        android:label="fragment_others_list_list"
+        tools:layout="@layout/fragment_others_list_list" />
 </navigation>
