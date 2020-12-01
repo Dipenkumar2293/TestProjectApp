@@ -8,12 +8,13 @@
     android:layout_marginEnd="0dp"
     android:outlineAmbientShadowColor="#1E1E1E"
     android:outlineSpotShadowColor="#434343"
-    app:cardBackgroundColor="#E1E1E1">
+    app:cardBackgroundColor="#E1E1E1"
+    app:cardCornerRadius="14dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#BCBABA"
+        android:background="#659F9F9F"
         android:outlineSpotShadowColor="#353535"
         android:padding="2dp">
 
@@ -72,7 +73,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="160dp"
+            android:layout_marginStart="150dp"
             android:layout_marginTop="2dp"
             android:layout_marginEnd="12dp"
             android:layout_toEndOf="@+id/endTimer"
@@ -83,16 +84,16 @@
 
         <TextView
             android:id="@+id/event_Content"
-            android:layout_width="301dp"
-            android:layout_height="72dp"
+            android:layout_width="303dp"
+            android:layout_height="73dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginTop="36dp"
+            android:layout_marginTop="48dp"
             android:layout_marginEnd="14dp"
-            android:layout_marginBottom="0dp"
+            android:layout_marginBottom="2dp"
             android:layout_toStartOf="@+id/dateShow"
             android:background="@android:drawable/editbox_background"
-            android:backgroundTint="#B9FFFCFC"
+            android:backgroundTint="#D2FFFFFF"
             android:gravity="center_vertical"
             android:paddingStart="10dp"
             android:paddingEnd="2dp"
