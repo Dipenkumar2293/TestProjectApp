@@ -4,19 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#222121"
+    android:background="#FFFFFF"
     tools:context=".AddEventFragment">
 
     <TextView
         android:id="@+id/fromView"
         android:layout_width="146dp"
         android:layout_height="44dp"
-        android:background="@drawable/textview1"
+        android:background="@drawable/custom_textview"
         android:gravity="center"
         android:hint="@string/from"
-        android:textColor="#B4B6B3"
-        android:textColorHint="#502E2E"
-        android:textSize="24sp"
+        android:textColor="#FA71CD"
+        android:textColorHint="#A8502E2E"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline8"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
         app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
@@ -24,12 +25,13 @@
         android:id="@+id/toView"
         android:layout_width="146dp"
         android:layout_height="44dp"
-        android:background="@drawable/textview1"
+        android:background="@drawable/custom_textview"
         android:gravity="center"
         android:hint="@string/to"
-        android:textColor="#B4B6B3"
-        android:textColorHint="#502E2E"
-        android:textSize="24sp"
+        android:textColor="#FA71CD"
+        android:textColorHint="#A8502E2E"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/fromView"
         app:layout_constraintTop_toTopOf="@+id/guideline4" />
@@ -38,12 +40,15 @@
         android:id="@+id/dateView"
         android:layout_width="146dp"
         android:layout_height="44dp"
-        android:background="@drawable/textview1"
+        android:background="@drawable/custom_textview"
         android:gravity="center"
         android:hint="@string/year_m_d"
-        android:textColor="#B4B6B3"
-        android:textColorHint="#502E2E"
-        android:textSize="24sp"
+        android:textColor="#FA71CD"
+        android:textColorHint="#A8502E2E"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline10"
+        app:layout_constraintEnd_toStartOf="@+id/guideline15"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
         app:layout_constraintTop_toTopOf="@+id/guideline9" />
 
@@ -53,11 +58,15 @@
         android:layout_height="44dp"
         android:gravity="center|start"
         android:text="@string/set_time2"
-        android:textColor="#CDACAC05"
-        android:textSize="30sp"
+        android:textColor="#BC1E1C18"
+        android:textSize="26sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        app:layout_constraintEnd_toStartOf="@+id/guideline15"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="@+id/guideline7" />
+        app:layout_constraintTop_toTopOf="@+id/guideline7"
+        app:layout_constraintVertical_bias="0.346" />
 
     <TextView
         android:id="@+id/date_Title"
@@ -65,23 +74,33 @@
         android:layout_height="44dp"
         android:gravity="center|start"
         android:text="@string/set_date1"
-        android:textColor="#CDACAC05"
-        android:textSize="30sp"
+        android:textColor="#BC1E1C18"
+        android:textSize="26sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/guideline9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.467"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="@+id/guideline8" />
+        app:layout_constraintTop_toTopOf="@+id/guideline8"
+        app:layout_constraintVertical_bias="0.333" />
 
     <TextView
         android:id="@+id/category_title"
         android:layout_width="wrap_content"
         android:layout_height="44dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp"
         android:gravity="center|start"
         android:text="@string/categories"
-        android:textColor="#CDACAC05"
-        android:textSize="30sp"
+        android:textColor="#BC1E1C18"
+        android:textSize="26sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/list_spinner"
+        app:layout_constraintEnd_toStartOf="@+id/guideline15"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="@+id/guideline10" />
+        app:layout_constraintTop_toTopOf="@+id/guideline10"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/event_title"
@@ -89,59 +108,74 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/events"
-        android:textColor="#CDACAC05"
-        android:textSize="30sp"
+        android:textColor="#BC1E1C18"
+        android:textSize="26sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/input_event"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.467"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="@+id/guideline5" />
+        app:layout_constraintTop_toTopOf="@+id/guideline5"
+        app:layout_constraintVertical_bias="0.529" />
 
     <Spinner
         android:id="@+id/list_spinner"
-        android:layout_width="0dp"
+        android:layout_width="352dp"
         android:layout_height="39dp"
-        android:layout_marginTop="4dp"
-        android:background="@drawable/spinner_back"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/custom_textview"
         android:dropDownWidth="match_parent"
         android:forceDarkAllowed="false"
-        android:gravity="center|center_horizontal"
+        android:foregroundGravity="center"
+        android:gravity="center"
         android:outlineAmbientShadowColor="#C6BC2904"
         android:outlineSpotShadowColor="#DD4949"
         android:spinnerMode="dialog"
+        app:layout_constraintBottom_toTopOf="@+id/save_btn"
         app:layout_constraintEnd_toStartOf="@+id/guideline15"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
-        app:layout_constraintTop_toTopOf="@+id/guideline11" />
+        app:layout_constraintTop_toTopOf="@+id/guideline11"
+        app:layout_constraintVertical_bias="0.244" />
 
     <EditText
         android:id="@+id/input_event"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:autofillHints=""
+        android:background="@drawable/custom_textview"
         android:ems="10"
+        android:gravity="start|center_vertical"
         android:hint="@string/write_your_task"
+        android:includeFontPadding="true"
         android:inputType="textShortMessage|textPersonName"
-        android:textColorHint="#43F1F12B"
-        android:textColor="@color/white"
+        android:paddingStart="10dp"
+        android:paddingEnd="5dp"
+        android:textColor="#351D1D"
+        android:textColorHint="#70535314"
         android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline7"
         app:layout_constraintEnd_toStartOf="@+id/guideline15"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
         app:layout_constraintTop_toTopOf="@+id/guideline6" />
 
     <Button
         android:id="@+id/save_btn"
-        style="@style/Widget.AppCompat.Button.Borderless"
+        style="@style/Widget.AppCompat.Button"
         android:layout_width="150dp"
         android:layout_height="0dp"
         android:background="@drawable/custom_button"
         android:fontFamily="@font/bubblegum_sans"
+        android:gravity="center"
         android:text="@string/add"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="#F4F112"
+        android:textColor="#F8F6F6"
         android:textSize="26sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toStartOf="@+id/guideline15"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
-        app:layout_constraintTop_toTopOf="@+id/guideline12" />
+        app:layout_constraintTop_toTopOf="@+id/guideline12"
+        app:strokeColor="#FFFFFF" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -211,14 +245,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.58" />
+        app:layout_constraintGuide_percent="0.57" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.67" />
+        app:layout_constraintGuide_percent="0.65" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline12"

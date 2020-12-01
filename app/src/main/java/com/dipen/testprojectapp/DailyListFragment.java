@@ -47,7 +47,6 @@ public class DailyListFragment extends Fragment {
         return fragment;
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -64,9 +63,10 @@ public class DailyListFragment extends Fragment {
             }
 
             @Override
-            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-              eventsViewModel.delete(adapter.getEventAt(viewHolder.getAdapterPosition()));
-              Toast.makeText(getContext(), "Event Deleted", Toast.LENGTH_SHORT).show();
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction)
+            {
+                eventsViewModel.delete(adapter.getEventAt(viewHolder.getAdapterPosition()));
+                Toast.makeText(getContext(), "Event Deleted", Toast.LENGTH_SHORT).show();
             }
         }).attachToRecyclerView(recyclerView);
 
