@@ -19,8 +19,8 @@
         app:layout_constraintTop_toTopOf="parent" />-->
     <DatePicker
         android:id="@+id/date_picker"
-        android:layout_width="352dp"
-        android:layout_height="wrap_content"
+        android:layout_width="342dp"
+        android:layout_height="389dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:calendarTextColor="#FFFFFF"
@@ -30,9 +30,10 @@
         android:headerBackground="@color/design_default_color_secondary_variant"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.17000002" />
+        app:layout_constraintVertical_bias="0.084" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

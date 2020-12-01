@@ -1,18 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/weekly_fragment"
+    android:name="com.dipen.testprojectapp.WeeklyFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:name="com.dipen.testprojectapp.WeeklyFragment"
     tools:context=".WeeklyFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/weekly_list"
-        android:name="com.dipen.testprojectapp.WeeklyFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        tools:context=".WeeklyFragment"/>
-</FrameLayout>
+    <Button
+        android:id="@+id/bOth"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="@string/other"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bPro" />
+
+    <Button
+        android:id="@+id/bPro"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="@string/professional"
+        app:layout_constraintBottom_toTopOf="@+id/bOth"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bFit" />
+
+    <Button
+        android:id="@+id/bFit"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="@string/fitness"
+        app:layout_constraintBottom_toTopOf="@+id/bPro"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bPer" />
+
+    <Button
+        android:id="@+id/bPer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="@string/personal"
+        app:layout_constraintBottom_toTopOf="@+id/bFit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bEd" />
+
+    <Button
+        android:id="@+id/bEd"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="@string/education"
+        app:layout_constraintBottom_toTopOf="@+id/bPer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

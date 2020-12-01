@@ -37,6 +37,11 @@
     <string name="lines">LINES</string>
     <string name="category">Category</string>
     <string name="delete_all_events">Delete All Events</string>
+    <string name="other">Other</string>
+    <string name="professional">Professional</string>
+    <string name="fitness">Fitness</string>
+    <string name="personal">Personal</string>
+    <string name="education">Education</string>
     <string-array name="weekly_list">
         <item>Education</item>
         <item>Fitness</item>
