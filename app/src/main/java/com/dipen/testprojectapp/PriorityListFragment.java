@@ -16,6 +16,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -72,18 +73,29 @@ public class PriorityListFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setHasFixedSize(true);
 
-       new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
-           @Override
-           public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
-               return false;
-           }
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,
+                ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
 
-           @Override
-           public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-               eventsViewModel.update(adapter.getEventAt(viewHolder.getAdapterPosition()));
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction)
+            {
+                /*eventsViewModel.delete(adapter.getEventAt(viewHolder.getAdapterPosition()));
+                Toast.makeText(getContext(), "Event Deleted", Toast.LENGTH_SHORT).show();*/
 
-           }
-       }).attachToRecyclerView(recyclerView);
+                if(direction == ItemTouchHelper.RIGHT){
+                    eventsViewModel.delete(adapter.getEventAt(viewHolder.getAdapterPosition()));
+                    Toast.makeText(getContext(), "Event Deleted", Toast.LENGTH_SHORT).show();
+                }
+                else if (direction == ItemTouchHelper.LEFT){
+                    eventsViewModel.update(adapter.getEventAt(viewHolder.getAdapterPosition()));
+                    Toast.makeText(getContext(), "Priority List Updated", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }).attachToRecyclerView(recyclerView);
 
 
         return view;

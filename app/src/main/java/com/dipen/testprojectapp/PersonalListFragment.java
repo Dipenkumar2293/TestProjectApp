@@ -78,9 +78,19 @@ public class PersonalListFragment extends Fragment {
             }
 
             @Override
-            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                eventsViewModel.delete(adapter.getEventAt(viewHolder.getAdapterPosition()));
-                Toast.makeText(getContext(), "Event Deleted", Toast.LENGTH_SHORT).show();
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction)
+            {
+                /*eventsViewModel.delete(adapter.getEventAt(viewHolder.getAdapterPosition()));
+                Toast.makeText(getContext(), "Event Deleted", Toast.LENGTH_SHORT).show();*/
+
+                if(direction == ItemTouchHelper.RIGHT){
+                    eventsViewModel.delete(adapter.getEventAt(viewHolder.getAdapterPosition()));
+                    Toast.makeText(getContext(), "Event Deleted", Toast.LENGTH_SHORT).show();
+                }
+                else if (direction == ItemTouchHelper.LEFT){
+                    eventsViewModel.update(adapter.getEventAt(viewHolder.getAdapterPosition()));
+                    Toast.makeText(getContext(), "Priority List Updated", Toast.LENGTH_SHORT).show();
+                }
             }
         }).attachToRecyclerView(recyclerView);
         return view;
