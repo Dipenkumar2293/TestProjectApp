@@ -31,7 +31,7 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventHolde
         holder.eventText.setText(currentEvent.getName());
         holder.dateText.setText(currentEvent.getDate());
         holder.categoryList.setText(currentEvent.getCategory());
-        holder.isPriority = currentEvent.getPriority();
+        holder.isPriority = currentEvent.getIsPriority();
     }
 
     @Override
@@ -55,7 +55,7 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventHolde
         private TextView dateText;
         private TextView eventText;
         private TextView categoryList;
-        private boolean isPriority = false;
+        private String isPriority;
 
 
         public EventHolder(@NonNull View itemView) {

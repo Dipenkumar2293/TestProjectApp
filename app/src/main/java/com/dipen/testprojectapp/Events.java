@@ -10,12 +10,21 @@ import java.util.Date;
 public class Events {
     @PrimaryKey(autoGenerate = true)
     private int id;
-    private String name;
-    private String startTime;
-    private String  endTime;
-    private String  date;
-    private String category;
-    private String isPriority;
+    public String name;
+    public String startTime;
+    public String  endTime;
+    public String  date;
+    public String category;
+    public String isPriority;
+
+    public Events(){
+        this.name = "";
+        this.startTime = "";
+        this.endTime = "";
+        this.date = "";
+        this.category = "";
+        this.isPriority = "";
+    }
 
     public Events(String name, String startTime, String endTime, String date, String category, String isPriority) {
         this.name = name;
@@ -25,6 +34,8 @@ public class Events {
         this.category = category;
         this.isPriority = isPriority;
     }
+
+    public void setName(String name) {this.name = name;}
 
     public void setId(int id) {
         this.id = id;
@@ -54,7 +65,7 @@ public class Events {
         return category;
     }
 
-    public String getPriority(){ return isPriority; }
+    public String getIsPriority() { return isPriority;}
 
-    public void setPriority(String priority){ this.isPriority = priority; }
+    public void setIsPriority(String priority) { this.isPriority = priority; }
 }

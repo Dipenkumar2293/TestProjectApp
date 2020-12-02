@@ -98,7 +98,7 @@ public class PriorityListFragment extends Fragment {
         eventsViewModel.getPriorityEvents().observe(getViewLifecycleOwner(), new Observer<List<Events>>() {
             @Override
             public void onChanged(List<Events> events) {
-                Log.d("potato", String.valueOf(events.get(0).getPriority()));
+               // Log.d("potato", String.valueOf(events.get(0).getPriority()));
                 adapter.setEventsList(events);
             }
         });

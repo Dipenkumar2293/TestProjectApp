@@ -48,8 +48,8 @@ public class EventRepository {
         new InsertEventAsyncTask(eventDao).execute(events);
     }
     public void update(Events events){
-        events.setPriority("yes");
-        Log.d("priority", String.valueOf(events.getPriority()));
+        events.setIsPriority("yes");
+        Log.d("priority", String.valueOf(events.getIsPriority()));
         new UpdateEventAsyncTask(eventDao).execute(events);
     }
     public void delete(Events events){
