@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -26,6 +27,8 @@ public class DailyListFragment extends Fragment {
      final EventsAdapter adapter = new EventsAdapter();
      private EventsViewModel eventsViewModel;
      private RecyclerView recyclerView;
+
+     private NotificationManagerCompat notificationManager;
 
     // TODO: Customize parameter argument names
 
@@ -54,6 +57,7 @@ public class DailyListFragment extends Fragment {
         recyclerView = view.findViewById(R.id.Edlist);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setHasFixedSize(true);
+
 
         new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,
                 ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {

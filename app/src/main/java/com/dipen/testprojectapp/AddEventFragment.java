@@ -2,11 +2,14 @@ package com.dipen.testprojectapp;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.app.Notification;
 import android.app.TimePickerDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
@@ -29,18 +32,21 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.allyants.notifyme.NotifyMe;
+
 import java.util.Calendar;
 import java.util.List;
 
 public class AddEventFragment extends Fragment implements AdapterView.OnItemSelectedListener {
     private EventsViewModel evModel;
     private Button addBtn;
-    private EditText edit;
+    static   EditText edit;
     static TextView from;
     static TextView to;
     static TextView date;
     static boolean onclicked;
     static Spinner spin;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -76,6 +82,7 @@ public class AddEventFragment extends Fragment implements AdapterView.OnItemSele
         date = v.findViewById(R.id.dateView);
         spin = v.findViewById(R.id.list_spinner);
         addBtn = v.findViewById(R.id.save_btn);
+
 
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -185,9 +192,24 @@ public class AddEventFragment extends Fragment implements AdapterView.OnItemSele
             int hour = c.get(Calendar.HOUR_OF_DAY);
             int minute = c.get(Calendar.MINUTE);
 
+
+
+           NotifyMe notifyMe = new NotifyMe.Builder(getContext())
+                    .title(from.getText().toString())
+                    .content(edit.getText().toString())
+                    .color(255,0,0,255)
+                    .led_color(255,255,255,255)
+                    .time(c.getTime())
+                    .addAction(new Intent(), "Snooze", false )
+                    .key("test")
+                    .addAction(new Intent(), "Dismiss", true, false)
+                    .addAction(new Intent(), "Done")
+                    .large_icon(R.mipmap.ic_launcher_foreground)
+                    .build();
+
             // Create a new instance of TimePickerDialog and return it
             return new TimePickerDialog(getActivity(), this, hour, minute,
-                    DateFormat.is24HourFormat(getActivity()));
+                       DateFormat.is24HourFormat(getActivity()));
 
         }
 
@@ -222,6 +244,7 @@ public class AddEventFragment extends Fragment implements AdapterView.OnItemSele
             int day = c.get(Calendar.DAY_OF_MONTH);
 
             // Create a new instance of DatePickerDialog and return it
+
             return new DatePickerDialog(getActivity(), this, year, month, day);
         }
 
