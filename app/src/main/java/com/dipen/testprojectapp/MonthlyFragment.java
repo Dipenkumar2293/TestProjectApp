@@ -3,7 +3,9 @@ package com.dipen.testprojectapp;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -71,9 +73,19 @@ public class MonthlyFragment extends Fragment {
                 new DatePicker.OnDateChangedListener() {
                     @Override
                     public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                        Toast.makeText(view.getContext(),"Date:-" + picker.getDayOfMonth()
-                        +"\n"+ "Month:-" + (picker.getMonth() + 1)+"\n" + "Year:-" + picker.getYear(),
-                                Toast.LENGTH_SHORT).show();
+                        String date = picker.getYear() + "-" + (picker.getMonth()+1) + "-";
+                        if(picker.getDayOfMonth() > 0 && picker.getDayOfMonth() < 10)
+                            date += "0" + picker.getDayOfMonth();
+                        else
+                            date += picker.getDayOfMonth();
+                        Bundle b = new Bundle();
+                        b.putString("date", date);
+                        WeeklyFragment f = new WeeklyFragment();
+                        MonthlyListFragment mFragment = new MonthlyListFragment();
+                        mFragment.setArguments(b);
+                        FragmentTransaction t = getFragmentManager().beginTransaction();
+                        t.replace(R.id.montlhy_list_frag,mFragment);
+                        t.commit();
                     }
                 });
 

@@ -2,11 +2,12 @@
 <androidx.recyclerview.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/exams_list"
+    android:id="@+id/monthly_list"
+    android:name="com.dipen.testprojectapp.MonthlyListFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="8dp"
-    android:layout_marginRight="8dp"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
     app:layoutManager="LinearLayoutManager"
-    tools:context=".ExamsListFragment"
-    tools:listitem="@layout/fragment_daily_list" />
+    tools:context=".MonthlyListFragment"
+    tools:listitem="@layout/fragment_monthly_list" />
