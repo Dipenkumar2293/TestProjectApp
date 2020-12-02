@@ -46,4 +46,7 @@ public interface EventDao {
 
     @Query("SELECT * FROM event_table WHERE name LIKE '%exam%' or name LIKE '%final%' or name LIKE '%midterm%' ORDER BY date ASC")
     LiveData<List<Events>>getExamEvents();
+
+    @Query("SELECT * FROM event_table WHERE isPriority = 'yes' ORDER BY date ASC")
+    LiveData<List<Events>>getPriorityEvents();
 }

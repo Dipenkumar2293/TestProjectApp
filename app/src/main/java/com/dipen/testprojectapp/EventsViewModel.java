@@ -19,6 +19,7 @@ public class EventsViewModel extends AndroidViewModel {
     private LiveData<List<Events>> fit_weeklyEvents;
     private LiveData<List<Events>> oth_weeklyEvents;
     private LiveData<List<Events>> examEvents;
+    private LiveData<List<Events>> priorityEvents;
 
     public EventsViewModel(@NonNull Application application) {
         super(application);
@@ -31,6 +32,8 @@ public class EventsViewModel extends AndroidViewModel {
         fit_weeklyEvents = repository.getFitWeeklyEvents();
         oth_weeklyEvents = repository.getOthWeeklyEvents();
         examEvents = repository.getExamEvents();
+        priorityEvents = repository.getPriorityEvents();
+
     }
     public void insert(Events events){
         repository.insert(events);
@@ -72,5 +75,8 @@ public class EventsViewModel extends AndroidViewModel {
 
     public LiveData<List<Events>> getExamEvents() {
         return examEvents;
+    }
+    public LiveData<List<Events>> getPriorityEvents() {
+        return priorityEvents;
     }
 }
